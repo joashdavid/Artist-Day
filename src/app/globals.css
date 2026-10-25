@@ -1,0 +1,197 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* ── Van Gogh night palette ─────────────────────────────── */
+  --color-ink: #0a0d16; /* deep midnight blue-black  */
+  --color-ink-2: #10141f; /* raised surface            */
+  --color-ink-3: #171c2b; /* hover surface             */
+  --color-cream: #f3edda; /* starlight cream           */
+  --color-gold: #e4b95b; /* van gogh yellow           */
+  --color-gold-2: #d9a441; /* deeper gold               */
+  --color-violet: #8c7bb5; /* iris violet               */
+  --color-terra: #c97b4f; /* terracotta                */
+  --color-sage: #8fa387; /* olive / sage green        */
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-twinkle-slow: twinkle 3.2s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+}
+
+/* font vars reference next/font variables set on <body>, so they must be
+   inlined into utilities (resolving per-element) instead of emitted at :root */
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+}
+
+/* shadcn variable mapping (kept for ui component compatibility) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #0a0d16;
+  --foreground: #f3edda;
+  --card: #10141f;
+  --card-foreground: #f3edda;
+  --popover: #10141f;
+  --popover-foreground: #f3edda;
+  --primary: #e4b95b;
+  --primary-foreground: #0a0d16;
+  --secondary: #171c2b;
+  --secondary-foreground: #f3edda;
+  --muted: #171c2b;
+  --muted-foreground: #9aa0b5;
+  --accent: #171c2b;
+  --accent-foreground: #f3edda;
+  --border: rgba(243, 237, 218, 0.1);
+  --input: rgba(243, 237, 218, 0.14);
+  --ring: #e4b95b;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+  body {
+    @apply bg-ink text-cream;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(228, 185, 91, 0.85);
+    color: #0a0d16;
+  }
+  /* slim gold scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0d16;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a3047;
+    border-radius: 8px;
+    border: 2px solid #0a0d16;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e4b95b;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer utilities {
+  /* film-grain texture overlay */
+  .noise::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("/grain.png");
+    contain: strict;
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(115deg, #f3d98b 0%, #e4b95b 45%, #c98f2e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* subtle brush-stroke underline for display headings */
+  .brush-underline {
+    background-image: linear-gradient(
+      104deg,
+      rgba(228, 185, 91, 0) 0.9%,
+      rgba(228, 185, 91, 0.55) 2.4%,
+      rgba(228, 185, 91, 0.45) 97%,
+      rgba(228, 185, 91, 0) 99%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 0.34em;
+    background-position: 0 88%;
+  }
+
+  .card-frame {
+    box-shadow:
+      0 0 0 1px rgba(243, 237, 218, 0.08),
+      0 24px 60px -24px rgba(0, 0, 0, 0.75);
+  }
+
+  .paper {
+    background-color: #f6efdd;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(201, 123, 79, 0.06), transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(140, 123, 181, 0.08), transparent 50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .noise::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

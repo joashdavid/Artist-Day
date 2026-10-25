@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "src": "/artwork/optimized/hero-7983a0eaa291.webp",
+    "w": 1440,
+    "h": 768
+  },
+  "artist-portrait-1": {
+    "src": "/artwork/optimized/artist-portrait-1-7368fc33b93a.webp",
+    "w": 1086,
+    "h": 1448
+  },
+  "painting-1": {
+    "src": "/artwork/optimized/painting-1-b3dcc4254a36.webp",
+    "w": 1383,
+    "h": 1920
+  },
+  "painting-2": {
+    "src": "/artwork/optimized/painting-2-34956d9472d9.webp",
+    "w": 1920,
+    "h": 1389
+  },
+  "painting-3": {
+    "src": "/artwork/optimized/painting-3-1bfccee766b6.webp",
+    "w": 1607,
+    "h": 1920
+  },
+  "painting-4": {
+    "src": "/artwork/optimized/painting-4-41db05875356.webp",
+    "w": 1369,
+    "h": 1864
+  },
+  "painting-5": {
+    "src": "/artwork/optimized/painting-5-9c0c634a6935.webp",
+    "w": 1396,
+    "h": 1625
+  },
+  "painting-6": {
+    "src": "/artwork/optimized/painting-6-4cf5e6beb743.webp",
+    "w": 1920,
+    "h": 1344
+  },
+  "painting-7": {
+    "src": "/artwork/optimized/painting-7-b21fc4cb0268.webp",
+    "w": 1920,
+    "h": 1438
+  },
+  "event-1": {
+    "src": "/artwork/optimized/event-1-0e0dc951e942.webp",
+    "w": 1344,
+    "h": 768
+  },
+  "event-2": {
+    "src": "/artwork/optimized/event-2-7872e823b0ed.webp",
+    "w": 1344,
+    "h": 768
+  },
+  "event-3": {
+    "src": "/artwork/optimized/event-3-2099bbb1331f.webp",
+    "w": 1344,
+    "h": 768
+  }
+}
